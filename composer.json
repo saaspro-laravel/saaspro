@@ -1,0 +1,25 @@
+{
+    "name": "saaspro/saaspro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Utibe-Abasi Emmanuel",
+            "email": "utyemma@gmail.com"
+        }
+    ],
+    "description": "Features plugin for Saas Pro",
+    "autoload": {
+        "psr-4": {
+            "SaasPro\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": { 
+            "providers": [
+                "SaasPro\\SaasProServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
