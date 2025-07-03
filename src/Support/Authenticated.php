@@ -1,8 +1,7 @@
 <?php
 
-namespace Utyemma\SaasPro\Support;
+namespace SaasPro\Support;
 
-use Utyemma\SaasPro\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class Authenticated {

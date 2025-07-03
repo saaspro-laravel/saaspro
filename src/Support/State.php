@@ -1,6 +1,6 @@
 <?php
 
-namespace Utyemma\SaasPro\Support;
+namespace SaasPro\Support;
 
 class State {
 
