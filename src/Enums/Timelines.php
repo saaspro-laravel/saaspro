@@ -4,6 +4,9 @@ namespace SaasPro\Enums;
 
 enum Timelines:string {
 
+    case SECOND = 'SECOND';
+    case MINUTE = 'MINUTE';
+    case HOUR = 'HOUR';
     case DAY = 'DAY';
     case WEEK = 'WEEK';
     case MONTH = 'MONTH';
@@ -11,6 +14,9 @@ enum Timelines:string {
 
     function days() {
         return match($this) {
+            // self::SECOND => 86400,
+            // self::MINUTE => 1440,
+            // self::HOUR => 24,
             self::DAY => 1,
             self::WEEK => 7,
             self::MONTH => 30,
@@ -20,6 +26,9 @@ enum Timelines:string {
     
     function label(){
         return match($this) {
+            self::SECOND => 'Every Second',
+            self::MINUTE => 'Every Minute',
+            self::HOUR => 'Hourly',
             self::DAY => 'Daily',
             self::WEEK => 'Weekly',
             self::MONTH => 'Monthly',
