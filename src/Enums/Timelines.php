@@ -45,7 +45,7 @@ enum Timelines:string {
         ];
     }
 
-    function interval($count){
+    function interval($count = 1){
         return $this->days() * $count;
     }
 
