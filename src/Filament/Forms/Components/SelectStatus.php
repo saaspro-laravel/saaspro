@@ -1,8 +1,8 @@
 <?php
 
-namespace Utyemma\SaasPro\Filament\Forms\Components;
+namespace SaasPro\Filament\Forms\Components;
 
-use Utyemma\SaasPro\Enums\Status;
+use SaasPro\Enums\Status;
 use Filament\Forms\Components\Select;
 
 class SelectStatus extends Select {

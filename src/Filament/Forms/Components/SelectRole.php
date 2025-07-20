@@ -1,8 +1,8 @@
 <?php
 
-namespace Utyemma\SaasPro\Filament\Forms\Components;
+namespace SaasPro\Filament\Forms\Components;
 
-use Utyemma\SaasPro\Enums\Roles;
+use SaasPro\Enums\Roles;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\Arr;
 
