@@ -12,7 +12,8 @@ class DiscoverPlugins extends Command {
     protected $description = 'Cache SaasPro Plugins';
 
     function handle(){
-        $this->info("Discovering Plugins");
+        $this->warn("Discovering SaasPro Plugins...");
+        $this->line('');
         
         $packages = [];
         $files = new Filesystem;
@@ -31,6 +32,11 @@ class DiscoverPlugins extends Command {
         }
 
         $files->replace(base_path("bootstrap/cache/plugins.json"), json_encode($plugins, JSON_PRETTY_PRINT));
+
+        if(($count = count($plugins)) < 1) return $this->info("No SaasPro plugins found.");
+        $text = $count === 1 ? 'plugin' : 'plugins';
+
+        $this->info("{$count} {$text} discovered and cached successfully.");
     }
 
 }

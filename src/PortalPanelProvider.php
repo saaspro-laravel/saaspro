@@ -21,9 +21,6 @@ use SaasPro\Facades\Saaspro;
 
 class PortalPanelProvider extends PanelProvider {
     
-    function withPlugins(){
-
-    }
 
     function load(Panel $panel) {
         $plugins = Saaspro::plugins();
