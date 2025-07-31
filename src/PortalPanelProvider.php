@@ -27,12 +27,12 @@ class PortalPanelProvider extends PanelProvider {
 
     function load(Panel $panel) {
         $plugins = Saaspro::plugins();
-
         foreach($plugins as $plugin) {
             if(method_exists(app($plugin), 'filament')) {
                 $panel = app($plugin)->filament($panel);
             }
         }
+
 
         return $panel;
     }

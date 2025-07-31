@@ -1,6 +1,6 @@
 <?php
 
-namespace Utyemma\SaasPro\Filament\Tables\Columns;
+namespace SaasPro\Filament\Tables\Columns;
 
 use Filament\Tables\Columns\TextColumn;
 
