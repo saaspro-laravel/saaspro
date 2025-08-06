@@ -24,3 +24,12 @@ if(!function_exists('toast')) {
         return new Toast($message, $title);
     }
 }
+
+// Creating a token helper with an instance declaration will expose the entrie Str class 
+// which may lead to confusion as the entry point for the Token class should be the static methods
+// Could there be a workaround this in a clean way??
+// if(!function_exists('token')) {
+//     function token(){
+//         return new \SaasPro\Support\Token();
+//     }
+// }

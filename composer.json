@@ -16,9 +16,6 @@
             "src/helpers.php"
         ]
     },
-    "require": {
-        "utyemma/laravel-model-relatable": "dev-main"
-    },
     "suggest": {
         "filament/filament": "Required to access the admin panel"
     },
