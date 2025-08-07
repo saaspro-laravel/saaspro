@@ -19,6 +19,7 @@ class SaasProServiceProvider extends ServiceProvider {
 
     public function register(){
         $this->loadPluginProviders();
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     function loadPluginProviders(){

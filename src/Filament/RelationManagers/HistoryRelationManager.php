@@ -1,0 +1,57 @@
+<?php
+
+namespace SaasPro\Filament\RelationManagers;
+
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use SaasPro\Models\History;
+
+class HistoryRelationManager extends RelationManager
+{
+    protected static string $relationship = 'history';
+
+    public function form(Form $form): Form {
+        return $form->schema([
+            TextInput::make('entity')
+                ->afterStateHydrated(fn(TextInput $component, History $history) => $component->state($history->entity_name)),
+            TextInput::make('editor')
+                ->afterStateHydrated(fn(TextInput $component, History $history) => $component->state($history->editor_name)),
+            TextInput::make('event'),
+            Textarea::make('state')
+                ->rows(6)
+                ->formatStateUsing(fn($state) => json_encode($state))
+                ->columnSpanFull(),
+        ]);
+    }
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->recordTitleAttribute('user_id')
+            ->columns([
+                TextColumn::make('entity_name'),
+                TextColumn::make('editor_name')
+                    ->label('Editor'),
+                TextColumn::make('event'),
+            ])
+            ->modifyQueryUsing(fn(Builder $query) => $query->latest())
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}
