@@ -2,11 +2,13 @@
 
 namespace SaasPro\Filament\RelationManagers;
 
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -39,13 +41,28 @@ class HistoryRelationManager extends RelationManager
                 TextColumn::make('editor_name')
                     ->label('Editor'),
                 TextColumn::make('event'),
+                TextColumn::make('created_at')
+                    ->label("Performed At")
+                    ->datetime(),
             ])
             ->modifyQueryUsing(fn(Builder $query) => $query->latest())
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Action::make('View')
+                    ->modal(true)
+                    ->modalWidth('lg')
+                    ->color('gray')
+                    ->fillForm(fn (History $record): array => [
+                        'state' => $record->state,
+                    ])
+                    ->form([
+                        KeyValue::make('state')
+                            ->label('')
+                    ])
+                    ->disabledForm()
+                    ->modalSubmitAction(false),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
